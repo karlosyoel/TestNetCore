@@ -349,7 +349,7 @@ function init() {
 
     controls.movementSpeed = speedAll;
     controls.domElement = container;
-    controls.rollSpeed = 0.005;//Math.PI / 60;
+    controls.rollSpeed = 0.05;//Math.PI / 60;
     controls.autoForward = false;
     controls.dragToLook = true;
 
