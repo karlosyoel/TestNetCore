@@ -438,7 +438,24 @@ function distancia_x_y(p,q){
     // document.datos.dpp.value=(a*px+b*py+c*pz+d)/ m(a,b,c); //distancia pto a plano
 }
 
-function onPointerMove( event ) {
+function clickDirection(event) {
+    pointer.x = (event.clientX / window.innerWidth) * 2 - 1;
+    pointer.y = - (event.clientY / window.innerHeight) * 2 + 1;
+    pointer.z = 0.5;
+
+    raycaster.setFromCamera(pointer, camera)
+
+    controls.object.position.set(raycaster.ray.direction.x, raycaster.ray.direction.y, raycaster.ray.direction.z);
+    controls.tmpQuaternion.set(raycaster.ray.direction.x, raycaster.ray.direction.y, raycaster.ray.direction.z, 1).normalize();
+    controls.object.quaternion._x = raycaster.ray.direction.x;
+    controls.object.quaternion._y = raycaster.ray.direction.y;
+    controls.object.quaternion._z = raycaster.ray.direction.z;
+    controls.object.quaternion._w = 1;
+
+    console.log(raycaster.ray)
+}
+
+function onWheelMove( event ) {
 
     // calculate pointer position in normalized device coordinates
     // (-1 to +1) for both components
@@ -451,10 +468,10 @@ function onPointerMove( event ) {
     // console.log(camera);
     // controls.movementSpeed = 100/controls.getDistance();
     var dG = distancia_x_y(pointer,camera.position);
-    //if(dG<100){
-    //    //dG*=dG;
-    //}
-    controls.movementSpeed = 100 + (50 / dG);
+    if(dG<100){
+        //dG*=dG;
+    }
+    controls.movementSpeed = 100 + dG;
 
     var zoom = event.deltaY;
     var moveH = false;
@@ -479,12 +496,12 @@ function onPointerMove( event ) {
     }
     // console.log(dG);
     if(moveH){
-        if(moveH<0){
-            controls.moveState.rollRight = 1;
-            controls.moveState.rollLeft = 0;
+        if(moveH>0){
+            controls.moveState.right = 1;
+            controls.moveState.left = 0;
         }else{
-            controls.moveState.rollRight = 0;
-            controls.moveState.rollLeft = 1;
+            controls.moveState.right = 0;
+            controls.moveState.left = 1;
         }
     }
 
@@ -558,12 +575,13 @@ function goto(e) {
 
 }
 
-window.addEventListener( 'wheel', onPointerMove );
+window.addEventListener('wheel', onWheelMove);
 window.addEventListener( 'touchstart', function(e){
     touchEvent= e.touches;
 });
-window.addEventListener( 'touchmove', onPointerMove );
+window.addEventListener( 'touchmove', onWheelMove );
 
+//window.addEventListener('click', clickDirection);
 // window.addEventListener( 'pointermove', goto );
 
 // window.requestAnimationFrame(render);
