@@ -54,7 +54,7 @@ namespace TestNetCore.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,User,Pass,Created_at")] cUser cUser)
+        public async Task<IActionResult> Create([Bind("Id,User,Pass,Created_at,Direccion")] cUser cUser)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace TestNetCore.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,User,Pass,Created_at")] cUser cUser)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,User,Pass,Created_at,Direccion")] cUser cUser)
         {
             if (id != cUser.Id)
             {

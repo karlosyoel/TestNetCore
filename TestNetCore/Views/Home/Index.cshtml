@@ -2,11 +2,45 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<link type="text/css" rel="stylesheet" href="./js/otros/main.css">
+<link type="text/css" rel="stylesheet" href="./js/otros/style.css">
 
-<button>
-    Ver
-</button>
+		
+<!-- Import maps polyfill -->
+<!-- Remove this when import maps will be widely supported -->
+<script async src="./js/otros/es-module-shims.js"></script>
+
+
+<div id="canvas_container" class="position:absolute"></canvas></div>
+
+<div style="position: fixed; bottom:1px; right: 95px;">
+	<button id="btnAction">Text</button>
+</div>
+<script type="importmap">
+	{
+		"imports": {
+			"three": "./js/vendor/mrdoob/three.js/build/three.module.js"
+		}
+	}
+</script>
+<!-- <script src="./otros/three.min.js" wfd-invisible="true"></script> -->
+<script src="./js/otros/simplex-noise.min.js" wfd-invisible="true"></script>
+		
+<script type="module">
+	import { camera,controls } from "./js/js/main.js"
+	// console.log(camera);
+	let btnAction = ()=>{
+		controls.mouseStatus = 0;
+		controls.object.position.set(0,0,2);
+		controls.tmpQuaternion.set( 0,0,0, 1 ).normalize();
+		controls.object.quaternion._x = 0;
+		controls.object.quaternion._y = 0;
+		controls.object.quaternion._z = 0;
+		controls.object.quaternion._w = 1;
+	}
+
+	document.getElementById("btnAction").addEventListener('click',btnAction);
+			
+</script>
+
+	

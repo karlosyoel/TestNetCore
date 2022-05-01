@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.EntityFrameworkCore;
 using TestNetCore.Models;
 
@@ -25,8 +26,17 @@ app.UseRouting();
 //app.UseAuthentication();
 app.UseAuthorization();
 
+app.UseHttpsRedirection();
+var provider = new FileExtensionContentTypeProvider();
+provider.Mappings.Add(".glb", "text/xml");
+app.UseStaticFiles(new StaticFileOptions
+{
+    ContentTypeProvider = provider
+});
+
 app.MapControllerRoute(
     name: "default",
+//pattern: "{controller=cUsers}/{action=Index}/{id?}");
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();

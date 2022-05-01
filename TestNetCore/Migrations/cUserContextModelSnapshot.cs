@@ -33,6 +33,10 @@ namespace TestNetCore.Migrations
                     b.Property<DateTime>("Created_at")
                         .HasColumnType("date");
 
+                    b.Property<string>("Direccion")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(100)");
+
                     b.Property<string>("Pass")
                         .IsRequired()
                         .HasColumnType("nvarchar(100)");

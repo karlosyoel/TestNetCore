@@ -24,5 +24,10 @@ namespace TestNetCore.Models
         [Required]
         [DisplayName("Fecha de nacimiento")]
         public DateTime Created_at { get; set; }
+
+        [Column(TypeName = "nvarchar(100)")]
+        [Required]
+        [DisplayName("Dirección")]
+        public string Direccion { get; set; }
     }
 }
