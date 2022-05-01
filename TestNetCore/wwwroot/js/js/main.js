@@ -469,9 +469,9 @@ function onWheelMove( event ) {
     // controls.movementSpeed = 100/controls.getDistance();
     var dG = distancia_x_y(pointer,camera.position);
     if(dG<100){
-        //dG*=dG;
+        dG*=dG;
     }
-    controls.movementSpeed = 100;
+    controls.movementSpeed = dG;
 
     var zoom = event.deltaY;
     var moveH = false;
