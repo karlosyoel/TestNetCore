@@ -468,7 +468,7 @@ function onWheelMove( event ) {
     // console.log(camera);
     // controls.movementSpeed = 100/controls.getDistance();
     var dG = distancia_x_y(pointer,camera.position);
-    if(dG<100){
+    if(dG<20){
         dG*=dG;
     }
     controls.movementSpeed = dG;
@@ -506,7 +506,7 @@ function onWheelMove( event ) {
     }
 
     if(moveV){
-        if(moveV<0){
+        if(moveV>0){
             controls.moveState.pitchUp = 1;
             controls.moveState.pitchDown = 0;
         }else{
