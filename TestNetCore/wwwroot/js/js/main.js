@@ -496,7 +496,7 @@ function onWheelMove( event ) {
     }
     // console.log(dG);
     if(moveH){
-        if(moveH>0){
+        if(moveH<0){
             controls.moveState.right = 1;
             controls.moveState.left = 0;
         }else{
@@ -506,7 +506,7 @@ function onWheelMove( event ) {
     }
 
     if(moveV){
-        if(moveV>0){
+        if(moveV<0){
             controls.moveState.pitchUp = 1;
             controls.moveState.pitchDown = 0;
         }else{
