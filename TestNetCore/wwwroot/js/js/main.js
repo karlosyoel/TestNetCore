@@ -349,7 +349,7 @@ function init() {
 
     controls.movementSpeed = speedAll;
     controls.domElement = container;
-    controls.rollSpeed = 0.08;//Math.PI / 60;
+    controls.rollSpeed = 0.04;//Math.PI / 60;
     controls.autoForward = false;
     controls.dragToLook = true;
 
@@ -497,11 +497,11 @@ function onWheelMove( event ) {
     // console.log(dG);
     if(moveH){
         if(moveH<0){
-            controls.moveState.right = 1;
-            controls.moveState.left = 0;
+            controls.moveState.yawRight = 1;
+            controls.moveState.yawLeft = 0;
         }else{
-            controls.moveState.right = 0;
-            controls.moveState.left = 1;
+            controls.moveState.yawRight = 0;
+            controls.moveState.yawLeft = 1;
         }
     }
 
