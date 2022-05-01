@@ -349,7 +349,7 @@ function init() {
 
     controls.movementSpeed = speedAll;
     controls.domElement = container;
-    controls.rollSpeed = 0.05;//Math.PI / 60;
+    controls.rollSpeed = 0.1;//Math.PI / 60;
     controls.autoForward = false;
     controls.dragToLook = true;
 
@@ -480,11 +480,11 @@ function onPointerMove( event ) {
     // console.log(dG);
     if(moveH){
         if(moveH<0){
-            controls.moveState.yawRight = 1;
-            controls.moveState.yawLeft = 0;
+            controls.moveState.rollRight = 1;
+            controls.moveState.rollLeft = 0;
         }else{
-            controls.moveState.yawRight = 0;
-            controls.moveState.yawLeft = 1;
+            controls.moveState.rollRight = 0;
+            controls.moveState.rollLeft = 1;
         }
     }
 
