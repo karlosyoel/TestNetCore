@@ -471,7 +471,7 @@ function onWheelMove( event ) {
     if(dG<100){
         //dG*=dG;
     }
-    controls.movementSpeed = dG;
+    controls.movementSpeed = 100;
 
     var zoom = event.deltaY;
     var moveH = false;
